@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ══ EDIT: the text shown in the browser tab ═════════════════ -->
+
 <title>The Final Goodbye</title>
-<!-- ═════════════════════════════════════════════════════════════ -->
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* ─── the sheet ─────────────────────────────────────────────── */
   .sheet{
     position: relative;
     width: 100%;
@@ -62,7 +61,6 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* ─── masthead ──────────────────────────────────────────────── */
   .masthead{
     display: flex;
     justify-content: space-between;
@@ -80,7 +78,6 @@
   }
   .masthead .eyebrow{ color: var(--accent); }
 
-  /* ─── heading block ─────────────────────────────────────────── */
   h1{
     font-family:"Spectral", Georgia, serif;
     font-weight: 300;
@@ -109,7 +106,6 @@
     margin: 0 0 40px;
   }
 
-  /* ─── body ──────────────────────────────────────────────────── */
   .letter{
     font-family:"Spectral", Georgia, serif;
     font-weight: 400;
@@ -123,7 +119,6 @@
   .letter em{ font-style: italic; }
   .letter strong{ font-weight: 500; }
 
-  /* ─── the sign-off: typeset, then a real hand ───────────────── */
   .signoff{ margin-top: 46px; }
   .signoff .valediction{
     font-family:"Spectral", Georgia, serif;
@@ -150,7 +145,6 @@
     display: inline-block;
   }
 
-  /* ─── entrance ──────────────────────────────────────────────── */
   @keyframes land{
     from{ opacity:0; transform: translateY(14px) scale(.995); }
     to  { opacity:1; transform:none; }
@@ -171,7 +165,6 @@
     *{ animation:none !important; transition:none !important; }
   }
 
-  /* ─── small screens ─────────────────────────────────────────── */
   @media (max-width: 620px){
     :root{ --gutter: 30px; }
     body{ padding: 3vh 12px 6vh; }
