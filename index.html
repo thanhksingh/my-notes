@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ══ EDIT: the text shown in the browser tab ═════════════════ -->
+<title>[YOUR TITLE GOES HERE]</title>
+<!-- ═════════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Sans:wght@400;500&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --desk:      #2B2E2C;
+    --desk-deep: #202322;
+    --paper:     #E3E1DB;
+    --paper-lift:#EDEBE5;
+    --ink:       #1E2A3F;
+    --ink-soft:  #5D6572;
+    --accent:    #2F4A3C;
+
+    --gutter: 92px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin: 0;
+    min-height: 100vh;
+    padding: 7vh 20px 10vh;
+    background: radial-gradient(120% 90% at 50% 0%, var(--desk) 0%, var(--desk-deep) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ─── the sheet ─────────────────────────────────────────────── */
+  .sheet{
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background: linear-gradient(178deg, var(--paper-lift) 0%, var(--paper) 40%, var(--paper) 100%);
+    padding: 76px var(--gutter) 82px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.16) inset,
+      0 20px 48px -14px rgba(0,0,0,.55),
+      0 2px 6px rgba(0,0,0,.28);
+    overflow: hidden;
+  }
+
+  .sheet::before{
+    content:"";
+    position:absolute; inset:0;
+    pointer-events:none;
+    opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ─── masthead ──────────────────────────────────────────────── */
+  .masthead{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(30,42,63,.18);
+    margin-bottom: 54px;
+  }
+  .masthead .eyebrow{ color: var(--accent); }
+
+  /* ─── heading block ─────────────────────────────────────────── */
+  h1{
+    font-family:"Spectral", Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(33px, 5.4vw, 48px);
+    line-height: 1.18;
+    letter-spacing: -.012em;
+    color: var(--ink);
+    margin: 0 0 20px;
+    max-width: 20ch;
+  }
+
+  .subtext{
+    font-family:"Spectral", Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+    max-width: 48ch;
+  }
+
+  .rule{
+    width: 100%; height: 1px; border: 0;
+    background: linear-gradient(to right, var(--accent) 0 76px, rgba(30,42,63,.16) 76px 100%);
+    margin: 0 0 40px;
+  }
+
+  /* ─── body ──────────────────────────────────────────────────── */
+  .letter{
+    font-family:"Spectral", Georgia, serif;
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 1.78;
+    color: var(--ink);
+  }
+  .letter p{ margin: 0; }
+  .letter p + p{ text-indent: 2.2em; }          /* classic letter setting */
+  .letter p.break{ text-indent: 0; margin-top: 1.5em; }
+  .letter em{ font-style: italic; }
+  .letter strong{ font-weight: 500; }
+
+  /* ─── the sign-off: typeset, then a real hand ───────────────── */
+  .signoff{ margin-top: 46px; }
+  .signoff .valediction{
+    font-family:"Spectral", Georgia, serif;
+    font-size: 17.5px;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .signoff .hand{
+    font-family:"Nothing You Could Do", cursive;
+    font-size: 34px;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0;
+  }
+  .signoff .credentials{
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: .05em;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 12px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(30,42,63,.16);
+    display: inline-block;
+  }
+
+  /* ─── entrance ──────────────────────────────────────────────── */
+  @keyframes land{
+    from{ opacity:0; transform: translateY(14px) scale(.995); }
+    to  { opacity:1; transform:none; }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(7px); }
+    to  { opacity:1; transform:none; }
+  }
+  .sheet   { animation: land .68s cubic-bezier(.22,.8,.3,1) both; }
+  .masthead{ animation: rise .5s ease-out .34s both; }
+  h1       { animation: rise .5s ease-out .44s both; }
+  .subtext { animation: rise .5s ease-out .54s both; }
+  .rule    { animation: rise .5s ease-out .62s both; }
+  .letter  { animation: rise .6s ease-out .70s both; }
+  .signoff { animation: rise .6s ease-out .86s both; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  /* ─── small screens ─────────────────────────────────────────── */
+  @media (max-width: 620px){
+    :root{ --gutter: 30px; }
+    body{ padding: 3vh 12px 6vh; }
+    .sheet{ padding: 44px var(--gutter) 54px; }
+    .masthead{ font-size: 10px; letter-spacing:.12em; margin-bottom: 36px; flex-wrap: wrap; gap: 6px 18px; }
+    .subtext{ font-size: 16.5px; }
+    .letter{ font-size: 16.5px; line-height: 1.75; }
+    .signoff .hand{ font-size: 30px; }
+  }
+
+  @media print{
+    body{ background:#fff; padding:0; }
+    .sheet{ box-shadow:none; max-width:none; }
+    .sheet::before{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<article class="sheet">
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ▼▼▼  START EDITING HERE  ▼▼▼
+
+       HOW THIS WORKS
+       - Replace only the text written in [SQUARE BRACKETS].
+       - Delete the brackets too. They are just markers.
+       - Never change or delete anything inside < angle brackets >.
+         Those are the tags that make the page work.
+       - Lines wrapped in <!-- like this --> are notes to you.
+         They do not appear on the website.
+
+       WHEN YOU'RE DONE
+       Click "Commit changes" at the top right of GitHub.
+       Your site updates in about a minute.
+       ══════════════════════════════════════════════════════════════ -->
+
+
+  <!-- ── STEP 1 ─ THE TOP LINE ────────────────────────────────────
+       A short label on the left, the date on the right.
+       Keep both short — 3 or 4 words maximum. -->
+  <header class="masthead">
+    <span class="eyebrow">[A NOTE ON LEAVING]</span>
+    <span>[MARCH 2026]</span>
+  </header>
+
+
+  <!-- ── STEP 2 ─ THE TITLE ───────────────────────────────────────
+       The big line at the top. Aim for under 8 words. -->
+  <h1>[YOUR TITLE GOES HERE]</h1>
+
+
+  <!-- ── STEP 3 ─ THE SUBTEXT ─────────────────────────────────────
+       One or two sentences explaining what this letter is. -->
+  <p class="subtext">[ONE OR TWO SENTENCES SAYING WHAT THIS IS AND WHY YOU'RE WRITING IT.]</p>
+
+
+  <hr class="rule">
+
+
+  <!-- ── STEP 4 ─ THE LETTER ──────────────────────────────────────
+       IMPORTANT: every paragraph needs its own <p> and </p> tags.
+       If you paste your whole letter into one <p>, it will come out
+       as a single solid block with no spacing.
+
+       TO ADD A PARAGRAPH
+       Copy this whole line and paste it below the others:
+           <p>Your text.</p>
+
+       TO ADD A SECTION BREAK (extra space before a paragraph)
+       Use this version instead:
+           <p class="break">Your text.</p>
+       ──────────────────────────────────────────────────────────── -->
+  <div class="letter">
+
+    <p>[FIRST PARAGRAPH. This is where the letter opens — how long you've been here, or how it started.]</p>
+
+    <p>[SECOND PARAGRAPH. What you learned, and who you learned it from.]</p>
+
+    <p class="break">[THIRD PARAGRAPH. Note this one has class="break" — it gets extra space above it, so use it to start a new section. Good place for the practical part: where you're going, and that the handover is done.]</p>
+
+    <p>[FOURTH PARAGRAPH. How people can stay in touch.]</p>
+
+    <!-- Need another paragraph? Delete the <!- - and - -> around the
+         line below to switch it on, then write your text in it. -->
+    <!-- <p>[EXTRA PARAGRAPH.]</p> -->
+
+  </div>
+
+
+  <!-- ── STEP 5 ─ THE SIGNATURE ───────────────────────────────────
+       Your name, in handwriting. Just the name — nothing else. -->
+  <div class="signoff">
+    <p class="hand">[YOUR NAME]</p>
+  </div>
+
+
+  <!-- ══ ▲▲▲  STOP EDITING HERE  ▲▲▲ ═══════════════════════════════
+       Everything below this line is page machinery. Leave it alone.
+       ══════════════════════════════════════════════════════════════ -->
+
+</article>
+
+</body>
+</html>
